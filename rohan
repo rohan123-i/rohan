@@ -1,0 +1,123 @@
+text-align: c
+enter;<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohand's Assignment Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .assignment-container {
+            margin: 20px 0;
+        }
+
+        select, input[type="text"] {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .links-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .link-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Rohand's Assignment Tracker</h1>
+    </header>
+
+    <main>
+        <h2>Track your assignments</h2>
+
+        <div class="assignment-container">
+            <label for="assignment">Assignment:</label>
+            <select id="assignment">
+                <option value="">Select an Assignment</option>
+                <option value="Assignment 1">Assignment 1</option>
+                <option value="Assignment 2">Assignment 2</option>
+                <option value="Assignment 3">Assignment 3</option>
+            </select>
+
+            <label for="due-date">Due Date:</label>
+            <input type="text" id="due-date" placeholder="Enter due date">
+
+            <button onclick="addAssignment()">Add Assignment</button>
+        </div>
+
+        <div class="links-list" id="links-list">
+            <!-- Added links will appear here -->
+        </div>
+    </main>
+
+    <script>
+        function addAssignment() {
+            var assignment = document.getElementById("assignment").value;
+            var dueDate = document.getElementById("due-date").value;
+
+            if (assignment && dueDate) {
+                var listItem = document.createElement("div");
+                listItem.classList.add("link-item");
+
+                listItem.innerHTML = `<strong>${assignment}</strong><br>Due Date: ${dueDate}`;
+
+                var linkInput = document.createElement("input");
+                linkInput.type = "text";
+                linkInput.placeholder = "Insert link here";
+                linkInput.style.marginTop = "10px";
+                listItem.appendChild(linkInput);
+
+                document.getElementById("links-list").appendChild(listItem);
+
+                // Clear input fields after adding
+                document.getElementById("assignment").value = "";
+                document.getElementById("due-date").value = "";
+            } else {
+                alert("Please fill out both fields.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+s
